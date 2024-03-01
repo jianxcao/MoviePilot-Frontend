@@ -5,7 +5,7 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
 import vuetify from 'vite-plugin-vuetify'
-import { VitePWA } from 'vite-plugin-pwa'
+import { viteSingleFile } from 'vite-plugin-singlefile'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -26,104 +26,7 @@ export default defineConfig({
       imports: ['vue', 'vue-router', '@vueuse/core', '@vueuse/math', 'vuex'],
       vueTemplate: true,
     }),
-    VitePWA({
-      injectRegister: 'script',
-      registerType: 'autoUpdate',
-      strategies: 'injectManifest',
-      srcDir: 'src',
-      filename: 'service-worker.ts',
-      workbox: {
-        globPatterns: ['**/*.{js,css,html,ico,png,svg,jpg,jpeg}'],
-        navigateFallbackDenylist: [/.*\/api\/v\d+\/system\/logging.*/],
-      },
-      injectManifest: {
-        rollupFormat: 'iife',
-      },
-      devOptions: {
-        enabled: true,
-        type: 'module',
-      },
-      manifest: {
-        'name': 'MoviePilot',
-        'short_name': 'MoviePilot',
-        'start_url': './',
-        'display': 'standalone',
-        'icons': [
-          {
-            'src': './android-chrome-192x192.png',
-            'sizes': '192x192',
-            'type': 'image/png',
-            'purpose': 'any',
-          },
-          {
-            'src': './android-chrome-192x192_maskable.png',
-            'sizes': '192x192',
-            'type': 'image/png',
-            'purpose': 'maskable',
-          },
-          {
-            'src': './android-chrome-512x512.png',
-            'sizes': '512x512',
-            'type': 'image/png',
-            'purpose': 'any',
-          },
-          {
-            'src': './android-chrome-512x512_maskable.png',
-            'sizes': '512x512',
-            'type': 'image/png',
-            'purpose': 'maskable',
-          },
-        ],
-        'theme_color': '#28243D',
-        'background_color': '#28243D',
-        'shortcuts': [
-          {
-            'name': '推荐',
-            'url': './ranking',
-            'icons': [
-              {
-                'src': './sparkles-icon-192x192.png',
-                'sizes': '192x192',
-                'type': 'image/png',
-              },
-            ],
-          },
-          {
-            'name': '电影订阅',
-            'url': './subscribe/movie',
-            'icons': [
-              {
-                'src': './clock-icon-192x192.png',
-                'sizes': '192x192',
-                'type': 'image/png',
-              },
-            ],
-          },
-          {
-            'name': '电视剧订阅',
-            'url': './subscribe/tv',
-            'icons': [
-              {
-                'src': './clock-icon-192x192.png',
-                'sizes': '192x192',
-                'type': 'image/png',
-              },
-            ],
-          },
-          {
-            'name': '设置',
-            'url': './setting',
-            'icons': [
-              {
-                'src': './cog-icon-192x192.png',
-                'sizes': '192x192',
-                'type': 'image/png',
-              },
-            ],
-          },
-        ],
-      },
-    }),
+    viteSingleFile(),
   ],
   define: { 'process.env': {} },
   resolve: {
@@ -146,6 +49,7 @@ export default defineConfig({
         chunkFileNames: '[name].js',
       },
     },
+    target: 'es2015',
   },
   optimizeDeps: {
     exclude: ['vuetify'],

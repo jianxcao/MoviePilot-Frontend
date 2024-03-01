@@ -7462,6 +7462,13 @@ vite-plugin-pwa@^0.20.0:
     workbox-build "^7.1.0"
     workbox-window "^7.1.0"
 
+vite-plugin-singlefile@^0.13.5:
+  version "0.13.5"
+  resolved "https://npm.shopee.io/vite-plugin-singlefile/-/vite-plugin-singlefile-0.13.5.tgz#9465dbb0b06afb2a73600a50fcce4b51c8d10999"
+  integrity sha512-y/aRGh8qHmw2f1IhaI/C6PJAaov47ESYDvUv1am1YHMhpY+19B5k5Odp8P+tgs+zhfvak6QB1ykrALQErEAo7g==
+  dependencies:
+    micromatch "^4.0.5"
+
 vite-plugin-vue-layouts@^0.11.0:
   version "0.11.0"
   resolved "https://registry.yarnpkg.com/vite-plugin-vue-layouts/-/vite-plugin-vue-layouts-0.11.0.tgz#3e122222ee2943467c7e4b30b78a06a1c6391f74"
