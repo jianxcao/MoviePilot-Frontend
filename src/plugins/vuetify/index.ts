@@ -10,6 +10,7 @@ import theme from './theme'
 import '@core/scss/template/libs/vuetify/index.scss'
 import 'vuetify/styles'
 
+console.debug(theme, 'theme')
 export default createVuetify({
   aliases: {
     IconBtn: VBtn,

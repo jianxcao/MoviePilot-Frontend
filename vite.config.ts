@@ -4,8 +4,8 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
-import { VitePWA } from 'vite-plugin-pwa'
 import vuetify from 'vite-plugin-vuetify'
+import { viteSingleFile } from 'vite-plugin-singlefile'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -28,16 +28,8 @@ export default defineConfig({
       imports: ['vue', 'vue-router', '@vueuse/core', '@vueuse/math', 'vuex'],
       vueTemplate: true,
     }),
-    VitePWA({
-      registerType: 'autoUpdate',
-      injectRegister: 'script',
-      manifest: false,
-      workbox: {
-        navigateFallbackDenylist: [
-          /.*\/api\/v\d+\/system\/logging.*/,
-        ],
-      },
-    }),
+    viteSingleFile(),
+    // VitePWA({ registerType: 'autoUpdate', injectRegister: 'script', manifest: false }),
   ],
   define: { 'process.env': {} },
   resolve: {
@@ -60,6 +52,8 @@ export default defineConfig({
         chunkFileNames: '[name].js',
       },
     },
+    target: 'es2015',
+    
   },
   optimizeDeps: {
     exclude: ['vuetify'],
