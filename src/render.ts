@@ -14,18 +14,15 @@ import '@styles/styles.scss'
 import 'vue-toast-notification/dist/theme-bootstrap.css'
 import 'vue3-perfect-scrollbar/style.css'
 import DialogCloseBtn from '@/@core/components/DialogCloseBtn.vue'
-import { fixArrayAt } from '@/@core/utils/compatibility'
+import '@/@core/utils/compatibility'
 import FormRender from '@/components/renderWrap/FormWrap.vue'
 import PageRender from '@/components/renderWrap/PageWrap.vue'
-
-// 修复低版本Safari等浏览器数组不支持at函数的问题
-fixArrayAt()
-
 
 const create = function (com: Component, props: any) {
   const app = createApp(com, props)
   // 注册全局组件
-  app.component('VAceEditor', VAceEditor)
+  app
+    .component('VAceEditor', VAceEditor)
     .component('VApexChart', VueApexCharts)
     .component('VDialogCloseBtn', DialogCloseBtn)
 

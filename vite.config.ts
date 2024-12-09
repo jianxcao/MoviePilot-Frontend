@@ -26,7 +26,7 @@ export default defineConfig({
       imports: ['vue', 'vue-router', '@vueuse/core', '@vueuse/math', 'vuex'],
       vueTemplate: true,
     }),
-    viteSingleFile(),
+    // viteSingleFile(),
   ],
   define: { 'process.env': {} },
   resolve: {
